@@ -27,12 +27,22 @@
     <span>{{ info.name }}----{{ info.age }}</span
     ><button @click="change">改变</button>
     <button @click="changeText">改变字段</button><br />
-    <button @click="trigger">触发</button><span>{{ text }}</span>
+    <button @click="trigger">触发</button><span>{{ text }}</span
+    ><br />
+    <button @click="openDialog">弹窗</button><br />
+    异步组件
+    <suspense>
+      <suspenceComp />
+      <template #fallback>加载中...</template>
+    </suspense>
   </div>
 </template>
 <script setup lang="ts">
 import { useDog } from "@/hooks/useDog";
 import { useCustomRef } from "./customRef";
+import { DialogManager } from "@/common/DialogManager";
+import deleteDialog from "./deleteDialog.vue";
+import suspenceComp from "./suspenceComp.vue";
 const name1 = ref("");
 const name2 = ref("");
 const fullname = computed(() => name1.value + name2.value);
@@ -93,6 +103,9 @@ const changeText = () => {
 const text = useCustomRef(12333, 1000);
 const trigger = () => {
   text.value = "trigger";
+};
+const openDialog = () => {
+  DialogManager.showDialog("div", ["hello", h("span", "hello")]);
 };
 </script>
 <style lang="scss" scoped></style>
