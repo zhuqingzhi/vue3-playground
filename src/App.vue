@@ -6,7 +6,7 @@ const loadedData = (data) => {
 </script>
 
 <template>
-  <HelloWorld :age="11" msg="Vite + Vue" @loadedData="loadedData" />
+  <!-- <HelloWorld :age="11" msg="Vite + Vue" @loadedData="loadedData" /> -->
   <router-view />
 </template>
 

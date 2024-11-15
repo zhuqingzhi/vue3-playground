@@ -9,6 +9,10 @@ const routes = [
     path: "/test",
     component: () => import("@/views/abount.vue"),
   },
+  {
+    path: '/comp',
+    component:()=>import('@/views/parent/parent.vue')
+  }
 ];
 console.log("meta", import.meta.env);
 const router = createRouter({
